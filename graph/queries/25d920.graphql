@@ -1,0 +1,10 @@
+query findTodosWithId {
+  todos {
+    id
+    text
+    done
+    user {
+      name
+    }
+  }
+}
