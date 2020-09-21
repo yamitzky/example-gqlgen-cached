@@ -7,6 +7,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/yamitzky/gqlgentest/graph/expiration"
 	"github.com/yamitzky/gqlgentest/graph/generated"
 	"github.com/yamitzky/gqlgentest/graph/model"
 )
@@ -22,10 +23,14 @@ func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) 
 }
 
 func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
+	expiration.SetExpire(ctx, 30)
+
 	return r.todos, nil
 }
 
 func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
+	expiration.SetExpire(ctx, 86400)
+
 	return []*model.User{
 		{
 			ID:   "1",
