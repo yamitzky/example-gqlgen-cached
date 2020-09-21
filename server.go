@@ -28,6 +28,7 @@ func main() {
 	srv.AddTransport(expiration.TransportGET{})
 	srv.AddTransport(transport.POST{})
 	srv.Use(extension.AutomaticPersistedQuery{Cache: cache})
+	srv.Use(expiration.NewExtension())
 
 	http.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	http.Handle("/query", expiration.Middleware(srv))
