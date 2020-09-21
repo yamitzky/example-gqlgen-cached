@@ -25,6 +25,19 @@ func (r *queryResolver) Todos(ctx context.Context) ([]*model.Todo, error) {
 	return r.todos, nil
 }
 
+func (r *queryResolver) Users(ctx context.Context) ([]*model.User, error) {
+	return []*model.User{
+		{
+			ID:   "1",
+			Name: "Taro Yamada",
+		},
+		{
+			ID:   "2",
+			Name: "Yamitzky",
+		},
+	}, nil
+}
+
 func (r *todoResolver) User(ctx context.Context, obj *model.Todo) (*model.User, error) {
 	return &model.User{ID: obj.UserID, Name: "user " + obj.UserID}, nil
 }
