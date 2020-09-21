@@ -1,4 +1,4 @@
-# example-gqlgen-cached
+# gqlgen well-cached example
 
 Well-cached gqlgen server using APQ and Cache-Control
 
