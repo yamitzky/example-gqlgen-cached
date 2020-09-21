@@ -15,3 +15,7 @@ https://github.com/yamitzky/example-gqlgen-cached/commit/5917721c4cad555ccdac3ee
 ## Improvement #2: Cache-Control Header
 
 https://github.com/yamitzky/example-gqlgen-cached/commit/f4e956fb36086aeee11fb52a6e978af8a294a9ac
+
+## Improvement #3: Resolver-level cache
+
+https://github.com/yamitzky/example-gqlgen-cached/commit/05c6e5e69ed5d4b0de20cf0c3a433315bcfabd77
