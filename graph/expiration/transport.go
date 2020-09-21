@@ -72,8 +72,14 @@ func (h TransportGET) Do(w http.ResponseWriter, r *http.Request, exec graphql.Gr
 	responses, ctx := exec.DispatchOperation(r.Context(), rc)
 	result := responses(ctx)
 	exp := GetExpire(ctx)
-	if exp.time > 0 {
-		w.Header().Set("cache-control", fmt.Sprintf("max-age: %d", exp.time))
+	if exp.times != nil {
+		min := exp.times[0]
+		for _, e := range exp.times {
+			if e < min {
+				min = e
+			}
+		}
+		w.Header().Set("cache-control", fmt.Sprintf("max-age: %d", min))
 	}
 	writeJson(w, result)
 }

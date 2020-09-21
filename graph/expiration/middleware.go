@@ -13,7 +13,7 @@ type contextKey struct {
 }
 
 type expiration struct {
-	time int64
+	times []int64
 }
 
 func Middleware(next http.Handler) http.Handler {
@@ -35,7 +35,5 @@ func GetExpire(ctx context.Context) *expiration {
 
 func SetExpire(ctx context.Context, exp int64) {
 	currentExpire := GetExpire(ctx)
-	if currentExpire.time == 0 || exp < currentExpire.time {
-		currentExpire.time = exp
-	}
+	currentExpire.times = append(currentExpire.times, exp)
 }
